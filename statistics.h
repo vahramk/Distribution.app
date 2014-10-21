@@ -1,0 +1,1 @@
+# Detail statistics organizer
