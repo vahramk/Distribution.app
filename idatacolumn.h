@@ -1,5 +1,5 @@
 /* 
-*@brief Data column class - implements IDataTable interface
+*@brief Data column class - implements IDataColumn interface
 *
 **/
 
