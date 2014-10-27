@@ -1,5 +1,6 @@
 /* 
-*@brief Data column class - implements IDataColumn interface
+* @file idatacolumn.h
+* @brief Data column class - implements IDataColumn interface
 *
 **/
 
