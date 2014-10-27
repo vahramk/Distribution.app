@@ -1,6 +1,6 @@
 /* 
 * @file idatatable.h
-* @brief Data column class - implements IDataTable interface
+* @brief IDataTable interface
 *
 **/
 
