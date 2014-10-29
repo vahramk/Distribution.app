@@ -1,106 +1,96 @@
 /* 
 * @file cdatacolumn.h
-* @brief Data column class - implements IDataColumn interface
+* @brief Data column class implementation.
 *
 **/
 
-#ifndef CDATACOLUMN_H
-#define CDATACOLUMN_H
-
-#include "idatacolumn.h"
-#include <string>
+#include "datautility.h"
+#include "cdatacolumn.h"
 #include <deque>
+#include <cassert>
 
 namespace data
 {
-	//forward declaration.
-	class DataInterface;
-
-	/* 
-	* @brief The class CDataColumn implements the
-	*		IDataColumn interface.
-	**/
-	class CDataColumn:public IDataColumn
+	CDataColumn::CDataColumn(const std::string& name, EDataType type)
+		:m_name(name), m_type(type)
 	{
-	public:
-		/* 
-		* @brief This is the constructor.
-		* @param[in] name is the name of column. 
-		* @param[in] type is the type of column. 
-		**/
-		CDataColumn(const std::string& name, EDataType type);
+		switch(m_type) {
+		case String:
+			m_data = new Data<std::string>;
+			break;
+		case DateTime:
+			m_data = new Data<time_t>;
+			break;
+		case Int:
+			m_data = new Data<int>;
+			break;
+		case Double:	
+			m_data = new Data<double>;
+			break;
+		default:
+			assert(false);
+			break;
+		}
+	}
 
-		/* 
-		* @brief This function returns the count of rows in column. 
-		**/
-		virtual size_t getSize() const;
+	size_t CDataColumn::getSize() const
+	{
+		switch(m_type) {
+		case String:
+			return m_data->getSize<std::string>();
+			break;
+		case DateTime:
+			return m_data->getSize<time_t>();
+			break;
+		case Int:
+			return m_data->getSize<int>();
+			break;
+		case Double:	
+			return m_data->getSize<double>();
+			break;
+		default:
+			assert(false);
+			return 0;
+			break;
+		}
+	}
 
-		/* 
-		* @brief This function returns the name of the column.
-		**/
-		virtual const std::string& getName() const;
+	const std::string& CDataColumn::getName() const
+	{
+		return m_name;
+	}
 
-		/* 
-		* @brief This function returns the type of the column.
-		**/
-		virtual const EDataType getType() const;
+	const EDataType CDataColumn::getType() const
+	{
+		return m_type;
+	}
 
-		/* 
-		* @brief This function returns value of current cell, 
-		*		 corresponding to passed arguments (for std::string type).
-		* @param[in] row is the row (cell) number in current column. 
-		* @param[out] val is the value of cell which will be returned. 
-		* @exception throws std::out_of_range exception.
-		**/
-		virtual void getData(size_t row, std::string& val) const;
+	void CDataColumn::getData(size_t row, std::string& val) const
+	{
+		m_data->getData(row,val);
+	}
 
-		/* 
-		* @brief This function returns value of current cell, 
-		*		 corresponding to passed arguments (for time_t type).
-		* @param[in] row is the row (cell) number in current column. 
-		* @param[out] val is the value of cell which will be returned. 
-		* @exception throws std::out_of_range exception.
-		**/
-		virtual void getData(size_t row, time_t& val) const;
+	void CDataColumn::getData(size_t row, time_t& val) const
+	{
+		m_data->getData(row,val);
+	}
 
-		/* 
-		* @brief This function returns value of current cell, 
-		*		 corresponding to passed arguments (for int type).
-		* @param[in] row is the row (cell) number in current column. 
-		* @param[out] val is the value of cell which will be returned. 
-		* @exception throws std::out_of_range exception.
-		**/
-		virtual void getData(size_t row, int& val) const;
+	void CDataColumn::getData(size_t row, int& val) const
+	{
+		m_data->getData(row,val);
+	}
 
-		/* 
-		* @brief This function returns value of current cell, 
-		*		 corresponding to passed arguments (for double type).
-		* @param[in] row is the row (cell) number in current column. 
-		* @param[out] val is the value of cell which will be returned. 
-		* @exception throws std::out_of_range exception.
-		**/
-		virtual void getData(size_t row, double& val) const;
+	void CDataColumn::getData(size_t row, double& val) const
+	{
+		m_data->getData(row,val);
+	}
 
-		/* 
-		* @brief This function returns chunk of data buffer from column, 
-		*		 corresponding to passed arguments.
-		* @param[in] size is the size of chunk. 
-		* @param[out] buff is the container which will be returned. 
-		* @exception throws std::out_of_range exception.
-		**/
-		virtual const DataInterface* getDataBuffer() const; //To be changed. Mast take parameters.
+	const DataInterface* CDataColumn::getDataBuffer() const
+	{
+		return m_data;
+	}
 
-		/* 
-		* @brief This is the desconstructor.
-		**/
-		virtual ~CDataColumn();
+	CDataColumn::~CDataColumn()
+	{}
 
-	private:
-		EDataType m_type;
-		std::string m_name;
-		DataInterface * m_data;
-	};
-
-} // namespace data
-
-#endif //CDATACOLUMN_H
+} //namespace data
