@@ -1,8 +1,8 @@
-/* 
+/** 
 * @file cdatacolumn.h
 * @brief Data column class implementation.
 *
-**/
+*/
 
 #include "datautility.h"
 #include "cdatacolumn.h"

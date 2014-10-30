@@ -1,8 +1,8 @@
-/* 
+/** 
 * @file cdatatable.h
 * @brief Data table class implementation.
 *
-**/
+*/
 #include "datautility.h"
 #include "cdatacolumn.h"
 #include "cdatatable.h"	

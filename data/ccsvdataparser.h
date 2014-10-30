@@ -1,8 +1,8 @@
-/* 
+/** 
 * @file cdataparser.h
 * @brief CSV Data parser interface for the DataTable.
 *
-**/
+*/
 
 #include "cdataparser.h"
 

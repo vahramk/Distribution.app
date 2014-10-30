@@ -1,8 +1,8 @@
-/* 
+/** 
 * @file datautility.h
 * @brief Utilities interface.
 *
-**/
+*/
 
 #ifndef DATAUTILITY_H
 #define DATAUTILITY_H
@@ -11,9 +11,9 @@
 
 namespace data
 {
-	/* 
+	/** 
 	* @brief This is the type of data in table. 
-	**/
+	*/
 	enum EDataType {
 		Int = 0,
 		Double,
@@ -22,9 +22,9 @@ namespace data
 		TypeCount 
 	};
 	
-	/* 
+	/** 
 	* @brief This class provides auxiliary interface for Data class. 
-	**/
+	*/
 	class DataInterface
 	{
 	public:
@@ -41,9 +41,9 @@ namespace data
 		void getData(int row, T& val);
 	};
 	
-	/* 
+	/** 
 	* @brief This is the main data container type. 
-	**/
+	*/
 	template<typename T>
 	class Data: public DataInterface, public std::deque<T>
 	{

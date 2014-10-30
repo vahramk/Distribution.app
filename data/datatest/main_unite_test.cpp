@@ -1,6 +1,7 @@
-/*
-* This is the main unit test file of the data project.
-**/
+/**
+* @file main_unite_test.cpp
+* @brief This is the main unit test file of the data project.
+*/
 
 #include "../idatalayer.h"
 
