@@ -1,8 +1,8 @@
-/* 
+/**
 * @file idatalayer.h
 * @brief Data layer Interfaces
 *
-**/
+*/
 
 #ifndef IDATALAYER_H
 #define IDATALAYER_H
