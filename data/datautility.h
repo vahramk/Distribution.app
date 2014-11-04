@@ -8,7 +8,7 @@
 #define DATAUTILITY_H
 
 #include <vector>
-#include <boost/date_time/local_time/local_time.hpp>
+#include <sstream>
 
 namespace data
 {
@@ -92,7 +92,68 @@ namespace data
 		return t;
 	}
 
-	void fromStringToTime(const std::string& value, boost::local_time::local_date_time& ldt);
+	void fromStringToTime(const std::string& value, struct tm& dt);
+
+	class Tockenizer:public std::string
+	{
+	public:
+		Tockenizer()
+			:m_start(0), m_end(0), m_indx(0)
+		{}
+
+		bool operator++() const
+		{
+			if(m_indx >= size())
+			{
+				return false;
+			}
+			m_start = m_indx;
+			for(int bcksl_count = 0; m_indx < size(); ++m_indx)
+			{
+				const char& c = this->operator [](m_indx);
+				if(c =='\\')
+				{
+					if(bcksl_count == 0)
+					{
+						++bcksl_count;
+						continue;
+					}
+					bcksl_count = 0;
+					continue;
+				}
+				if(c ==',' && bcksl_count==0)
+				{
+					break;
+				}
+				bcksl_count = 0;
+			}
+			m_end = m_indx;
+			++m_indx;
+			return true;
+		}
+
+		int start() const
+		{
+			return m_start;
+		}
+
+		int end() const
+		{
+			return m_end;
+		}
+
+		void reset_parser() const
+		{
+			m_start=0;
+			m_end=0;
+			m_indx=0;
+		}
+
+	private:
+		mutable int m_start;
+		mutable int m_end;
+		mutable int m_indx;
+	};
 
 } //namespace data
 
