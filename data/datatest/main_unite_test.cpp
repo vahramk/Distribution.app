@@ -37,7 +37,7 @@ int main()
 	std::cout<<" n: "<<t->getColumn(13)->getName()<<std::endl;
 	std::string str;
 	double d;
-	//boost::local_time::local_date_time tk(boost::local_time::not_a_date_time);
+
 	struct tm dt;
 	t->getColumn(0)->getData(927,str);
 	t->getColumn(3)->getData(927,dt);
@@ -53,7 +53,7 @@ int main()
 	std::cout<<" n: "<<t1->getColumn(13)->getName()<<std::endl;
 	std::string str1;
 	double d1;
-	//boost::local_time::local_date_time tk1(boost::local_time::not_a_date_time);
+
 	struct tm dt1;
 	t1->getColumn(0)->getData(927,str1);
 	t1->getColumn(3)->getData(927,dt1);
