@@ -10,7 +10,7 @@
 #include "cdatatable.h"
 
 #include <string>
-#include <boost/tokenizer.hpp>
+#include <fstream>
 
 namespace data
 {
@@ -25,7 +25,7 @@ namespace data
 
 		std::vector<std::string> vheader;
 		std::vector<std::string> vdata;
-		std::string line;
+		Tockenizer line;
 
 		int i = 2;//read first 2 lines
 		while (i-- && getline(in, line))
@@ -92,11 +92,13 @@ namespace data
 		return t;
 	}
 
-	void CCSVParser::tokenize_line(const std::string& line, std::vector<std::string>& vdata) const
+	void CCSVParser::tokenize_line(const Tockenizer& line, std::vector<std::string>& vdata) const
 	{
-		typedef boost::tokenizer<boost::escaped_list_separator<char> > Tokenizer;
-		Tokenizer tk(line, boost::escaped_list_separator<char>('\\', '\,', '\"'));
-		vdata.assign(tk.begin(), tk.end());
+		while(line.operator ++())
+		{
+			vdata.push_back(std::string(line, line.start(), line.end() - line.start()));
+		}
+		line.reset_parser();
 	}
 
 	void CCSVParser::addValueToColumn(CDataColumn* c, const std::string& value)
@@ -107,10 +109,9 @@ namespace data
 			break;
 		case DateTime:
 			{
-				typedef boost::local_time::local_date_time bt;
-				bt ldt(boost::local_time::not_a_date_time);
-				fromStringToTime(value, ldt);
-				c->addValue(ldt);
+				struct tm dt;
+				fromStringToTime(value, dt);
+				c->addValue(dt);
 				break;
 			}
 		case Int:
@@ -129,7 +130,7 @@ namespace data
 		}
 	}
 
-	void CCSVParser::addValueToTable(CDataTable* t, size_t i,const std::string& value)
+	void CCSVParser::addValueToTable(CDataTable* t, size_t i, const std::string& value)
 	{
 		switch(t->getColumn(i)->getType()) {
 		case String:
@@ -137,10 +138,9 @@ namespace data
 			break;
 		case DateTime:
 			{
-				typedef boost::local_time::local_date_time bt;
-				bt ldt(boost::local_time::not_a_date_time);
-				fromStringToTime(value, ldt);
-				t->addCell(i, ldt);
+				struct tm dt;
+				fromStringToTime(value, dt);
+				t->addCell(i, dt);
 				break;
 			}
 		case Int:
@@ -156,7 +156,7 @@ namespace data
 		default:
 			assert(false);
 			break;
-		}
+		}	
 	}
 
 } //namespace data

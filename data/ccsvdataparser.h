@@ -19,6 +19,7 @@ namespace data
 	class IDataTable;
 	class CDataColumn;
 	class CDataTable;
+	class Tockenizer;
 
 	/** 
 	* @brief The class CCSVParser implements
@@ -58,7 +59,7 @@ namespace data
 		* @param[in] line is the string to be tokenized. 
 		* @param[out] vec is the container which will be returned.
 		*/
-		void tokenize_line(const std::string& line, std::vector<std::string>& vec) const;
+		void tokenize_line(const Tockenizer& line, std::vector<std::string>& vec) const;
 		
 		/** 
 		* @brief This function adds value to column corresponding to passed arguments.
