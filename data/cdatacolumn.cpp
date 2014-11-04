@@ -6,8 +6,10 @@
 
 #include "datautility.h"
 #include "cdatacolumn.h"
-#include <deque>
+
+#include <vector>
 #include <cassert>
+#include <boost/date_time/local_time/local_time.hpp>
 
 namespace data
 {
@@ -19,7 +21,7 @@ namespace data
 			m_data = new Data<std::string>;
 			break;
 		case DateTime:
-			m_data = new Data<time_t>;
+			m_data = new Data<boost::local_time::local_date_time>;
 			break;
 		case Int:
 			m_data = new Data<int>;
@@ -40,7 +42,7 @@ namespace data
 			return m_data->getSize<std::string>();
 			break;
 		case DateTime:
-			return m_data->getSize<time_t>();
+			return m_data->getSize<boost::local_time::local_date_time>();
 			break;
 		case Int:
 			return m_data->getSize<int>();
@@ -70,7 +72,7 @@ namespace data
 		m_data->getData(row,val);
 	}
 
-	void CDataColumn::getData(size_t row, time_t& val) const
+	void CDataColumn::getData(size_t row, boost::local_time::local_date_time& val) const
 	{
 		m_data->getData(row,val);
 	}

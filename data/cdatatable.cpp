@@ -3,6 +3,7 @@
 * @brief Data table class implementation.
 *
 */
+
 #include "datautility.h"
 #include "cdatacolumn.h"
 #include "cdatatable.h"	
@@ -26,6 +27,9 @@ namespace data
 
 	size_t CDataTable::getRowCount() const
 	{
+		if(m_data.empty()) {
+			return 0;
+		}
 		return m_data.at(0)->getSize();
 	}
 

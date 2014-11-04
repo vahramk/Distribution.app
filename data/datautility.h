@@ -7,7 +7,8 @@
 #ifndef DATAUTILITY_H
 #define DATAUTILITY_H
 
-#include <deque>
+#include <vector>
+#include <boost/date_time/local_time/local_time.hpp>
 
 namespace data
 {
@@ -21,7 +22,7 @@ namespace data
 		DateTime,
 		TypeCount 
 	};
-	
+
 	/** 
 	* @brief This class provides auxiliary interface for Data class. 
 	*/
@@ -40,17 +41,17 @@ namespace data
 		template<typename T>
 		void getData(int row, T& val);
 	};
-	
+
 	/** 
-	* @brief This is the main data container type. 
+	* @brief This is the main container type. 
 	*/
 	template<typename T>
-	class Data: public DataInterface, public std::deque<T>
+	class Data: public DataInterface, public std::vector<T>
 	{
 	public:
 		void getData(int row, T& val)
 		{
-			val = std::deque<T>::at(row);
+			val = std::vector<T>::at(row);
 		}
 	};
 
@@ -81,6 +82,17 @@ namespace data
 		Data<T> *pData = static_cast<Data<T>* >(this);
 		return pData->getData(row, val);
 	}
+
+	template<typename T>
+	T fromString(const std::string& value) 
+	{
+		std::istringstream stream(value);
+		T t;
+		stream >> t;
+		return t;
+	}
+
+	void fromStringToTime(const std::string& value, boost::local_time::local_date_time& ldt);
 
 } //namespace data
 

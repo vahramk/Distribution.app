@@ -8,7 +8,7 @@
 #define IDATALAYER_H
 
 #include "datautility.h"
-#include "ccsvdataparser.h"
+#include "cdataparser.h"
 #include "cdatacolumn.h"
 #include "cdatatable.h"
 

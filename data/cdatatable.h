@@ -90,6 +90,18 @@ namespace data
 		*/		
 		void addDataColumn(CDataColumn* column);
 
+		/** 
+		* @brief This function adds new cell into the selected column, 
+		*		 corresponding to passed arguments.
+		* @param[in] column_index this is the index of column. 
+		* @param[in] value this is the value which should be inserted. 
+		*/
+		template<typename T>
+		void addCell(size_t column_index, const T& value)
+		{
+			m_data.at(column_index).get()->addValue(value);
+		}
+
 	private:
 		unique_ptr_vector_t m_data;
 	};

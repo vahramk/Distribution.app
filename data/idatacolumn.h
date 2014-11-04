@@ -3,13 +3,16 @@
 * @brief IDataColumn interface
 *
 */
+
 #ifndef IDATACOLUMN_H
 #define IDATACOLUMN_H
 
 #include <string>
+#include <boost/date_time/local_time/local_time.hpp>
 
 namespace data 
 {
+	//forward declarations.
 	class DataInterface;
 	enum EDataType;
 
@@ -33,6 +36,15 @@ namespace data
 		* @brief This function returns the type of the column.
 		*/
 		virtual const EDataType getType() const = 0;
+
+		/** 
+		* @brief This function returns value of current cell, 
+		*		 corresponding to passed arguments (for boost::local_time::local_date_time type).
+		* @param[in] row is the row (cell) number in current column. 
+		* @param[out] val is the value of cell which will be returned. 
+		* @exception throws std::out_of_range exception.
+		*/		
+		virtual void getData(size_t row, boost::local_time::local_date_time& val) const = 0;		
 		
 		/** 
 		* @brief This function returns value of current cell, 
@@ -42,15 +54,6 @@ namespace data
 		* @exception throws std::out_of_range exception.
 		*/
 		virtual void getData(size_t row, std::string& val) const = 0;
-		
-		/** 
-		* @brief This function returns value of current cell, 
-		*		 corresponding to passed arguments (for time_t type).
-		* @param[in] row is the row (cell) number in current column. 
-		* @param[out] val is the value of cell which will be returned. 
-		* @exception throws std::out_of_range exception.
-		*/
-		virtual void getData(size_t row, time_t& val) const = 0;
 		
 		/** 
 		* @brief This function returns value of current cell, 
@@ -82,7 +85,7 @@ namespace data
 		/** 
 		* @brief This is the desconstructor.
 		*/
-		virtual ~IDataColumn() {};
+		virtual ~IDataColumn() = 0 {};
 	};
 
 } //namespace data

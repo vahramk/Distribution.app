@@ -8,8 +8,10 @@
 #define CDATACOLUMN_H
 
 #include "idatacolumn.h"
+
 #include <string>
-#include <deque>
+#include <vector>
+#include <boost/date_time/local_time/local_time.hpp>
 
 namespace data
 {
@@ -61,7 +63,7 @@ namespace data
 		* @param[out] val is the value of cell which will be returned. 
 		* @exception throws std::out_of_range exception.
 		*/
-		virtual void getData(size_t row, time_t& val) const;
+		virtual void getData(size_t row, boost::local_time::local_date_time& val) const;
 
 		/** 
 		* @brief This function returns value of current cell, 
@@ -95,10 +97,21 @@ namespace data
 		*/
 		virtual ~CDataColumn();
 
+	public:
+		/** 
+		* @brief Adds new element to the column.
+		* @param[in] value is the value to be added. 
+		*/		
+		template<typename T>
+		void addValue(const T& value)
+		{
+			m_data->pushBack(value);
+		}
+
 	private:
 		EDataType m_type;
 		std::string m_name;
-		DataInterface * m_data;
+		DataInterface* m_data;
 	};
 
 } // namespace data
