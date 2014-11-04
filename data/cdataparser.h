@@ -36,7 +36,7 @@ namespace data
 		/** 
 		* @brief This is the main parser function.
 		*/
-		IDataTable* parse()
+		const IDataTable* parse()
 		{
 			return m_parser->parse();
 		}
