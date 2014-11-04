@@ -37,24 +37,30 @@ int main()
 	std::cout<<" n: "<<t->getColumn(13)->getName()<<std::endl;
 	std::string str;
 	double d;
-	boost::local_time::local_date_time tk(boost::local_time::not_a_date_time);
+	//boost::local_time::local_date_time tk(boost::local_time::not_a_date_time);
+	struct tm dt;
 	t->getColumn(0)->getData(927,str);
-	t->getColumn(3)->getData(927,tk);
+	t->getColumn(3)->getData(927,dt);
 	t->getColumn(13)->getData(927,d);
-	std::cout<<"last element: "<<str<<" c: "<<d<<" tk: "<<tk<<std::endl;
-	
+	char buf[20];
+	sprintf(buf, "%04d/%02d/%02d %02d-%02d-%02d", dt.tm_year, dt.tm_mon, dt.tm_mday, dt.tm_hour, dt.tm_min, dt.tm_sec);
+	std::cout<<"last element: "<<str<<" c: "<<d<<" dt: "<<buf<<std::endl;
+
 	std::cout<<"\n2. CDataParser interface"<<std::endl;
 	CDataParser cdp(ff, CDataParser::csvType);
-	IDataTable* t1 = cdp.parse();
+	const IDataTable* t1 = cdp.parse();
 	std::cout<<"r: "<<t1->getRowCount()<<" c: "<<t1->getColumnCount()<<std::endl;
 	std::cout<<" n: "<<t1->getColumn(13)->getName()<<std::endl;
 	std::string str1;
 	double d1;
-	boost::local_time::local_date_time tk1(boost::local_time::not_a_date_time);
+	//boost::local_time::local_date_time tk1(boost::local_time::not_a_date_time);
+	struct tm dt1;
 	t1->getColumn(0)->getData(927,str1);
-	t1->getColumn(3)->getData(927,tk1);
+	t1->getColumn(3)->getData(927,dt1);
 	t1->getColumn(13)->getData(927,d1);
-	std::cout<<"last element: "<<str1<<" c: "<<d1<<" tk: "<<tk1<<std::endl;
+	char buf1[20];
+	sprintf(buf1, "%04d/%02d/%02d %02d-%02d-%02d", dt.tm_year, dt.tm_mon, dt.tm_mday, dt.tm_hour, dt.tm_min, dt.tm_sec);
+	std::cout<<"last element: "<<str1<<" c: "<<d1<<" dt: "<<buf1<<std::endl;
 
 	std::cout<<"\nStatus: Success"<<std::endl;
 	return 0;
