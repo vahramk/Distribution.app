@@ -57,7 +57,7 @@ namespace data
 
 		/** 
 		* @brief This function returns value of current cell, 
-		*		 corresponding to passed arguments (for time_t type).
+		*		 corresponding to passed arguments (for struct tm type).
 		* @param[in] row is the row (cell) number in current column. 
 		* @param[out] val is the value of cell which will be returned. 
 		* @exception throws std::out_of_range exception.
