@@ -9,7 +9,6 @@
 
 #include <vector>
 #include <cassert>
-#include <boost/date_time/local_time/local_time.hpp>
 
 namespace data
 {
@@ -21,7 +20,7 @@ namespace data
 			m_data = new Data<std::string>;
 			break;
 		case DateTime:
-			m_data = new Data<boost::local_time::local_date_time>;
+			m_data = new Data<struct tm>;
 			break;
 		case Int:
 			m_data = new Data<int>;
@@ -42,7 +41,7 @@ namespace data
 			return m_data->getSize<std::string>();
 			break;
 		case DateTime:
-			return m_data->getSize<boost::local_time::local_date_time>();
+			return m_data->getSize<struct tm>();
 			break;
 		case Int:
 			return m_data->getSize<int>();
@@ -72,7 +71,7 @@ namespace data
 		m_data->getData(row,val);
 	}
 
-	void CDataColumn::getData(size_t row, boost::local_time::local_date_time& val) const
+	void CDataColumn::getData(size_t row, struct tm& val) const
 	{
 		m_data->getData(row,val);
 	}

@@ -11,7 +11,6 @@
 
 #include <string>
 #include <vector>
-#include <boost/date_time/local_time/local_time.hpp>
 
 namespace data
 {
@@ -63,7 +62,7 @@ namespace data
 		* @param[out] val is the value of cell which will be returned. 
 		* @exception throws std::out_of_range exception.
 		*/
-		virtual void getData(size_t row, boost::local_time::local_date_time& val) const;
+		virtual void getData(size_t row, struct tm& val) const;
 
 		/** 
 		* @brief This function returns value of current cell, 
