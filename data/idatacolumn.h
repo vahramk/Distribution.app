@@ -8,7 +8,6 @@
 #define IDATACOLUMN_H
 
 #include <string>
-#include <boost/date_time/local_time/local_time.hpp>
 
 namespace data 
 {
@@ -39,12 +38,12 @@ namespace data
 
 		/** 
 		* @brief This function returns value of current cell, 
-		*		 corresponding to passed arguments (for boost::local_time::local_date_time type).
+		*		 corresponding to passed arguments (for struct tm).
 		* @param[in] row is the row (cell) number in current column. 
 		* @param[out] val is the value of cell which will be returned. 
 		* @exception throws std::out_of_range exception.
 		*/		
-		virtual void getData(size_t row, boost::local_time::local_date_time& val) const = 0;		
+		virtual void getData(size_t row, struct tm& val) const = 0;		
 		
 		/** 
 		* @brief This function returns value of current cell, 
