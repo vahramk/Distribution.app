@@ -99,7 +99,7 @@ namespace data
 		template<typename T>
 		void addCell(size_t column_index, const T& value)
 		{
-			m_data.at(column_index).get()->addValue(value);
+			m_data[column_index]->addValue(value);
 		}
 
 	private:
