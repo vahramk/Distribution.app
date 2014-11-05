@@ -24,6 +24,89 @@ namespace data
 	};
 
 	/** 
+	* @brief This class provides boost's style unique_ptr. 
+	*/
+	template<typename T, typename Deleter>
+	class unique_ptr
+	{
+	public:
+		typedef T value_type;
+		typedef Deleter deleter_type;
+
+	public:
+		unique_ptr()
+			:m_p(0)
+		{}
+
+		unique_ptr(const unique_ptr& rhs)
+		{
+			m_p=rhs.take();
+		}
+
+		unique_ptr(const value_type* rhs)
+		{
+			m_p = const_cast<value_type*>(rhs);
+			rhs = 0;
+		}
+
+		const value_type* operator->() const
+		{
+			return m_p;
+		}
+
+		value_type* operator->()
+		{
+			return const_cast<unique_ptr*>(this)->m_p;
+		}
+		
+		const value_type& operator*() const
+		{
+			return *m_p;
+		}
+
+		value_type& operator*()
+		{
+			return *const_cast<unique_ptr*>(this)->m_p;
+		}
+
+		value_type* get() const
+		{
+			return m_p;
+		}
+
+		~unique_ptr()
+		{
+			destroy(); 
+		}
+		
+		value_type* take() const
+		{
+			value_type* t = m_p;
+			reset();
+			return t;
+		}
+
+		void reset() const
+		{
+			m_p = 0;
+		}
+
+		void destroy()
+		{
+			if (m_p != 0)
+			{
+				m_del(m_p);
+			}
+			m_p = 0;
+		}
+
+	private:
+		mutable value_type* m_p;
+		deleter_type m_del;
+
+	};
+
+	/** 
 	* @brief This class provides auxiliary interface for Data class. 
 	*/
 	class DataInterface
