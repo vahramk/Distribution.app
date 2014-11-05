@@ -9,11 +9,11 @@
 
 #include "idatatable.h"
 
-#include <boost/interprocess/smart_ptr/unique_ptr.hpp>
-#include <boost/interprocess/containers/vector.hpp>
+#include <vector>
 
 namespace data
 {	
+	//forward declarations.
 	class CDataColumn;
 	
 	//unnamed namespace
@@ -32,10 +32,10 @@ namespace data
 		};
 
 		//This is the type of a unique pointer.
-		typedef boost::interprocess::unique_ptr<CDataColumn, GenericDeleter<CDataColumn> > unique_ptr_type;
+		typedef unique_ptr<CDataColumn, GenericDeleter<CDataColumn> > unique_ptr_type;
 
 		//Defines container of unique pointer.
-		typedef boost::interprocess::vector< unique_ptr_type > unique_ptr_vector_t;
+		typedef std::vector< unique_ptr_type > unique_ptr_vector_t;
 
 	} //unnamed namespace
 
