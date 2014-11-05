@@ -40,7 +40,8 @@ namespace data
 
 	void CDataTable::addDataColumn(CDataColumn * column)
 	{
-		m_data.push_back(unique_ptr_type(column));
+		m_data.push_back(column);
+		column = 0;
 	}
 
 	CDataTable::~CDataTable() 
