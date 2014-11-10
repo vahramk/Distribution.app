@@ -13,25 +13,25 @@ int main()
 
 	//testing IDataColumn
 	IDataColumn* p = 0;
-	CDataColumn c("val", EDataType::Int);
+    CDataColumn c("val", Int);
 	p = &c;
 	//p->getData
 	std::string s = p->getName();
-	size_t i = p->getSize();
-	EDataType a = p->getType();
+    //size_t i = p->getSize();
+    //EDataType a = p->getType();
 
 	//testing IDataTable
-	IDataTable* tp = 0;
-	CDataTable tc;
-	tp = &tc;
+    //CDataTable tc;
+    //IDataTable* tp = 0;
+    //tp = &tc;
 	//tp->getColumn
 	//tp->getColumnName
-	i = tp->getColumnCount();
-	i = tp->getRowCount();
+    //i = tp->getColumnCount();
+    //i = tp->getRowCount();
 
 	std::cout<<"Testing Parsers"<<std::endl;
 	std::cout<<"\n1. CCSVParser"<<std::endl;
-	std::string ff = "pivot.csv";
+    std::string ff = "pivot.csv";
 	CCSVParser csv(ff);
 	IDataTable* t = csv.parse();
 	std::cout<<"r: "<<t->getRowCount()<<" c: "<<t->getColumnCount()<<std::endl;
