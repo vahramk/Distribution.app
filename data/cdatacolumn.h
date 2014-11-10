@@ -44,7 +44,7 @@ namespace data
 		/** 
 		* @brief This function returns the type of the column.
 		*/
-		virtual const EDataType getType() const;
+        virtual EDataType getType() const;
 
 		/** 
 		* @brief This function returns value of current cell, 
@@ -108,8 +108,8 @@ namespace data
 		}
 
 	private:
-		EDataType m_type;
-		std::string m_name;
+        std::string m_name;
+        EDataType m_type;
 		DataInterface* m_data;
 	};
 

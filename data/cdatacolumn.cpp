@@ -61,7 +61,7 @@ namespace data
 		return m_name;
 	}
 
-	const EDataType CDataColumn::getType() const
+    EDataType CDataColumn::getType() const
 	{
 		return m_type;
 	}
