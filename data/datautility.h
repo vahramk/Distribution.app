@@ -233,9 +233,9 @@ namespace data
 		}
 
 	private:
-		mutable int m_start;
-		mutable int m_end;
-		mutable int m_indx;
+        mutable size_t m_start;
+        mutable size_t m_end;
+        mutable size_t m_indx;
 	};
 
 } //namespace data
