@@ -7,6 +7,7 @@
 #ifndef CCSVDATAPARSER_H
 #define CCSVDATAPARSER_H
 
+#include "datautility.h"
 #include "idataparsermodule.h"
 
 #include <string>
@@ -15,7 +16,6 @@
 namespace data
 {
 	//forward declarations.
-	enum EDataType;
 	class IDataTable;
 	class CDataColumn;
 	class CDataTable;

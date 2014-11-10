@@ -5,7 +5,6 @@
 */
 
 #include "ccsvdataparser.h"
-#include "datautility.h"
 #include "cdatacolumn.h"
 #include "cdatatable.h"
 
@@ -41,7 +40,7 @@ namespace data
 		assert(vheader.size() == vdata.size());
 
 		CDataColumn* c;
-		for(int i=0; i<vdata.size(); ++i)
+        for(size_t i=0; i<vdata.size(); ++i)
 		{
 			const std::string& name = vheader[i];
 			EDataType type = get_type(vdata[i]);//get type of the column
@@ -54,7 +53,7 @@ namespace data
 		{
 			tokenize_line(line, vdata);
 			size_t c = m_table->getColumnCount();
-			for(int i=0; i<c; ++i)
+            for(size_t i=0; i<c; ++i)
 			{
 				addValueToTable(m_table, i, vdata[i]);
 			}
@@ -66,8 +65,7 @@ namespace data
 	{
 		EDataType t;
 		int dc = 0;
-		int i = 0;
-		for(; i<value.size(); ++i)
+        for(size_t i=0; i<value.size(); ++i)
 		{
 			if(value[i] == '.')
 			{
@@ -75,20 +73,20 @@ namespace data
 			}
 			if(value[i] == ':') 
 			{
-				t = EDataType::DateTime;
+                t = DateTime;
 				return t;
 			}
 			if((65<=value[i] && value[i]<=90)||(97<=value[i] && value[i]<=122))
 			{
-				t = EDataType::String;
+                t = String;
 				return t;
 			}
 		}
 		if(dc == 1)
 		{
-			t = EDataType::Double;
+            t = Double;
 		} else {
-			t = EDataType::Int;	
+            t = Int;
 		}
 		return t;
 	}
