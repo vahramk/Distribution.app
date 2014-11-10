@@ -23,7 +23,7 @@ namespace data
 		/** 
 		* @brief This is the desconstructor.
 		*/		
-		virtual ~IDataParserModule() = 0 {};
+        virtual ~IDataParserModule() {};
 	};
 }
 

@@ -34,7 +34,7 @@ namespace data
 		/** 
 		* @brief This function returns the type of the column.
 		*/
-		virtual const EDataType getType() const = 0;
+        virtual EDataType getType() const = 0;
 
 		/** 
 		* @brief This function returns value of current cell, 
@@ -84,7 +84,7 @@ namespace data
 		/** 
 		* @brief This is the desconstructor.
 		*/
-		virtual ~IDataColumn() = 0 {};
+        virtual ~IDataColumn() {};
 	};
 
 } //namespace data
