@@ -17,7 +17,7 @@ namespace data
 	class CDataColumn;
 	
 	//unnamed namespace
-	namespace {
+    //namespace {
 		/** 
 		* @brief This is a generic deleter for 
 		*		unique_ptr.
@@ -37,7 +37,7 @@ namespace data
 		//Defines container of unique pointer.
 		typedef std::vector< unique_ptr_type > unique_ptr_vector_t;
 
-	} //unnamed namespace
+    //} //unnamed namespace
 
 	/** 
 	* @brief The class CDataTable implements the
