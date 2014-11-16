@@ -1,7 +1,7 @@
 /**
 * @file ichart.h
 * @brief IChart class interface.
-**/
+*/
 
 #ifndef ICHART_H
 #define ICHART_H
@@ -26,7 +26,7 @@ public:
     IChart(const data::IDataColumn* oc)
         : m_cocolumn(oc)
     {
-        QASSERT(oc != 0);
+        Q_ASSERT(oc != 0);
     }
 
 public:
@@ -36,6 +36,13 @@ public:
      */
     virtual void paint(QPixmap& op) = 0;
 
+public:
+    /**
+     * @brief destructor
+     */
+    virtual ~IChart()
+    {}
+
 protected:
     /**
      * @brief Return pointer to column
@@ -43,7 +50,7 @@ protected:
      */
     const data::IDataColumn* getColumn() const
     {
-        Q_ASSERT(m_column != 0);
+        Q_ASSERT(m_cocolumn != 0);
         return m_cocolumn;
     }
 

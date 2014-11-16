@@ -9,11 +9,12 @@
 
 #include <string>
 
+#include "datautility.h"
+
 namespace data 
 {
 	//forward declarations.
 	class DataInterface;
-	enum EDataType;
 
 	/** 
 	* @brief The is an interface class.

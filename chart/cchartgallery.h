@@ -1,11 +1,12 @@
 /**
 * @file cchartgallery.h
 * @brief CChartGallery class interface.
-**/
+*/
 
 #ifndef CCHARTGALLERY_H
 #define CCHARTGALLERY_H
 
+#include <QHash>
 #include <QList>
 #include <QPixmap>
 
@@ -39,9 +40,18 @@ public:
      */
     QPixmap getPixmap(t_index ui, QSize os);
 
+public:
+    /**
+     * @brief destructer will delete all charts
+     */
+    virtual ~CChartGallery();
+
 private:
     typedef QList<IChart*> t_listcharts;
     t_listcharts m_charts;
+    typedef QHash<IChart*, QPixmap> t_hashchash;
+    t_hashchash m_chash;
+
 };
 
 } // namespace chart
