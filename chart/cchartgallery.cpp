@@ -17,7 +17,7 @@ void CChartGallery::addChart(IChart *oc)
 
 QPixmap CChartGallery::getPixmap(t_index ui, QSize os)
 {
-    Q_ASSERT(ui < m_charts.size());
+    Q_ASSERT(ui < static_cast<t_index>(m_charts.size()));
     Q_ASSERT(!os.isNull());
     IChart* ptrc = m_charts.at(ui);
     Q_ASSERT(ptrc != 0);
@@ -25,7 +25,7 @@ QPixmap CChartGallery::getPixmap(t_index ui, QSize os)
         return m_chash[ptrc];
     }
     QPixmap op(os);
-    ptrc->paint(op);
+    ptrc->draw(op);
     m_chash[ptrc] = op;
     return op;
 }

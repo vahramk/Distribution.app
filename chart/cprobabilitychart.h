@@ -23,10 +23,10 @@ public:
 
 public:
     /**
-     * @brief Paint chart on given pixmap
-     * @param[out] op reference to pixmap
+     * @brief draw chart on given paint device
+     * @param[out] pd reference to paint device
      */
-    virtual void paint(QPixmap &op);
+    virtual void draw(QPaintDevice& pd);
 
 public:
     /**

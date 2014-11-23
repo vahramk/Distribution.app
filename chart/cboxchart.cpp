@@ -12,7 +12,7 @@ CBoxChart::CBoxChart(const data::IDataColumn *oc)
     : IChart(oc)
 {}
 
-void CBoxChart::paint(QPixmap &op)
+void CBoxChart::draw(QPaintDevice& pd)
 {
 
 }

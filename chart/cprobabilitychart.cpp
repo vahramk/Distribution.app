@@ -12,7 +12,7 @@ CProbabilityChart::CProbabilityChart(const data::IDataColumn *oc)
     : IChart(oc)
 {}
 
-void CProbabilityChart::paint(QPixmap &op)
+void CProbabilityChart::draw(QPaintDevice &pd)
 {
 
 }

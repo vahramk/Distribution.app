@@ -12,7 +12,7 @@ CHistogramChart::CHistogramChart(const data::IDataColumn *oc)
     : IChart(oc)
 {}
 
-void CHistogramChart::paint(QPixmap &op)
+void CHistogramChart::draw(QPaintDevice &pd)
 {
 
 }

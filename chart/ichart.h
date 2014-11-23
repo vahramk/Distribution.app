@@ -7,14 +7,17 @@
 #define ICHART_H
 
 #include <QtGlobal>
+#include <QSharedData>
 
-class QPixmap;
-class data::IDataColumn;
+class QPaintDevice;
+namespace data {
+class IDataColumn;
+}
 
 namespace chart
 {
 
-class IChart
+class IChart : public QSharedData
 {
 public:
     /**
@@ -24,17 +27,18 @@ public:
      * @note oc != 0
      */
     IChart(const data::IDataColumn* oc)
-        : m_cocolumn(oc)
+        : QSharedData()
+        , m_cocolumn(oc)
     {
         Q_ASSERT(oc != 0);
     }
 
 public:
     /**
-     * @brief Paint chart on given pixmap
-     * @param[out] op reference to pixmap
+     * @brief draw chart on given paint device
+     * @param[out] pd reference to paint device
      */
-    virtual void paint(QPixmap& op) = 0;
+    virtual void draw(QPaintDevice& pd) = 0;
 
 public:
     /**
