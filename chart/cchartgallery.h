@@ -1,10 +1,10 @@
+#ifndef CCHARTGALLERY_H
+#define CCHARTGALLERY_H
+
 /**
 * @file cchartgallery.h
 * @brief CChartGallery class interface.
 */
-
-#ifndef CCHARTGALLERY_H
-#define CCHARTGALLERY_H
 
 #include <QHash>
 #include <QList>
@@ -12,7 +12,7 @@
 
 namespace chart {
 
-class IChart;
+class CChart;
 
 class CChartGallery
 {
@@ -28,7 +28,7 @@ public:
      * @param[in] oc chart which should be added
      * @note oc != 0
      */
-    void addChart(IChart* oc);
+    void addChart(CChart* oc);
 
 public:
     /**
@@ -47,9 +47,9 @@ public:
     virtual ~CChartGallery();
 
 private:
-    typedef QList<IChart*> t_listcharts;
+    typedef QList<CChart*> t_listcharts;
     t_listcharts m_charts;
-    typedef QHash<IChart*, QPixmap> t_hashchash;
+    typedef QHash<CChart*, QPixmap> t_hashchash;
     t_hashchash m_chash;
 
 };
