@@ -1,4 +1,11 @@
+/**
+* @file cdataarea.cpp
+* @brief CDataArea class implementation.
+*/
+
 #include "cdataarea.h"
+
+namespace chart {
 
 CDataArea::CDataArea(const QRectF& sc)
 {
@@ -21,3 +28,5 @@ void CDataArea::rescale(const QRectF &sc)
 {
     m_oscreenrect = sc;
 }
+
+} // namespace chart

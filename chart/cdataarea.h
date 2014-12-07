@@ -9,6 +9,8 @@
 #include <QPointF>
 #include <QRectF>
 
+namespace chart {
+
 class CDataArea
 {
 public:
@@ -45,5 +47,7 @@ private:
     QRectF m_odatarect;
     QRectF m_oscreenrect;
 };
+
+} // namespace chart
 
 #endif // CDATAAREA_H
