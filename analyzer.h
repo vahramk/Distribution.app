@@ -1,24 +1,20 @@
-//# Distribution analyzer class
-//# Analyzes selected parameters and keeps results
-
-#ifndef CANALYZER_H
-#define CANALYZER_H
+#ifndef ANALYZER_H
+#define ANALYZER_H
 
 #include "data/idatatable.h"
-#include "parameterstore.h"
-
-class CAnalalyzer: public data::IDataTable
+#include "chart/cchart.h"
+class CAnalyzer
 {
 public:
-	
-	CAnalalyzer (const IDataTable*, CParameterStore* );
-	void analyze();
+		CAnalyzer();
+		void run();
+		void set data(IDataTable*);
+
 
 private:
+		IDataTable*		m_pIdataTbl;
+		CChart* 		m_pChart;
+		CFunction*		m_pFunc;
 
-	void CountMin();
-	void ConutMAx();
-	
-	const IDataTable* m_pIdataTbl;
 };
-#endif // CANALYZER_H
+#endif // CCPARAMETER_H
