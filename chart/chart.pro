@@ -32,5 +32,5 @@ HEADERS += \
     chart/chistoxrange.h \
     chart/cprobabilitychart.h \
     chart/ichart.h \
-    chart/idatarange \
+    chart/idatarange.h \
     chart/cseries.h
