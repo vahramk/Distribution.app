@@ -1,3 +1,8 @@
+/**
+* @file chistoxrange.cpp
+* @brief CHistoXRange class implementation.
+*/
+
 #include "chistoxrange.h"
 
 namespace chart {
