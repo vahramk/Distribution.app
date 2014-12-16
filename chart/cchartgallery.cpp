@@ -15,6 +15,12 @@ void CChartGallery::addChart(CChart* oc)
     m_charts.push_back(oc);
 }
 
+CChart* CChartGallery::getChart(t_index i)
+{
+    Q_ASSERT(i < static_cast<t_index>(m_charts.size()));
+    return m_charts.at(i);
+}
+
 QPixmap CChartGallery::getPixmap(t_index ui, QSize os)
 {
     Q_ASSERT(ui < static_cast<t_index>(m_charts.size()));

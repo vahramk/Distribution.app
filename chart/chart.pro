@@ -21,7 +21,9 @@ SOURCES += \
     chart/chistogramchart.cpp \
     chart/chistoxrange.cpp \
     chart/cprobabilitychart.cpp \
-    chart/cseries.cpp
+    chart/cseries.cpp \
+    chart/chistoseries.cpp \
+    chart/chistoyrange.cpp
 
 HEADERS += \
     chart/cboxchart.h \
@@ -33,4 +35,6 @@ HEADERS += \
     chart/cprobabilitychart.h \
     chart/ichart.h \
     chart/idatarange.h \
-    chart/cseries.h
+    chart/cseries.h \
+    chart/chistoseries.h \
+    chart/chistoyrange.h

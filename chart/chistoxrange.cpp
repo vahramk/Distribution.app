@@ -7,24 +7,31 @@
 
 namespace chart {
 
-void CHistoXRange::init(const data::IDataColumn *c, int bc)
+void CHistoXRange::init(const IDataColumn *c, size_t bc)
 {
-    m_fBinSize = bc;
+    Q_ASSERT(c != 0);
+    m_nBinCount = bc;
+    double min = 50;
+    double max = 1500;
+    double av = (max - min)/bc;
+    m_fBinSize = av;
 }
 
 size_t CHistoXRange::getSize() const
 {
-    return 0;
+    return m_nBinCount;
 }
 
 QPair<double, double> CHistoXRange::getRange() const
 {
-    return QPair<double, double>(0, 0);
+    double x = m_fBinAnchor + 0.5 * m_fBinSize;
+    double y = m_fBinAnchor + (m_nBinCount - 0.5) * m_fBinSize;
+    return QPair<double, double>(x, y);
 }
 
 void CHistoXRange::getData(size_t row, double &val) const
 {
-
+    val = m_fBinAnchor + (row + 0.5) * m_fBinSize;
 }
 
 } // namespace chart

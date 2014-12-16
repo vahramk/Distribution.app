@@ -8,6 +8,7 @@
 
 #include "idatarange.h"
 
+
 namespace chart {
 
 class CHistoXRange : public IDataRange
@@ -18,7 +19,7 @@ public:
      * @param[in] c pointer to IDatacoulmn for wich to create range
      * @param[in] bc bin count for histogram chart
      */
-    void init(const data::IDataColumn* c, int bc);
+    void init(const data::IDataColumn* c, size_t bc = 10);
 
     /// @name Reimplemented interface
     /// @{
@@ -33,7 +34,7 @@ public:
     /// @}
 
 private:
-    int m_nBinCount;
+    size_t m_nBinCount;
     double m_fBinSize;
     double m_fBinAnchor;
 };

@@ -32,6 +32,14 @@ public:
 
 public:
     /**
+     * @brief Interface for getting chart with index
+     * @param[in] i index of chart
+     * @return CChart
+     */
+    CChart* getChart(t_index i);
+
+public:
+    /**
      * @brief Return painted pixmap using
      * given chart
      * @param[in] ui chart index
