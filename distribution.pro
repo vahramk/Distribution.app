@@ -1,7 +1,7 @@
 #-------------------------------------------------
 #
 # The Qt project file of the Distribution.app project.
-# This file mast must include all component Qt project files.
+# This file must include all component Qt project files.
 #
 #-------------------------------------------------
 
