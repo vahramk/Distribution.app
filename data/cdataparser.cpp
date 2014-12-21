@@ -8,7 +8,7 @@
 
 namespace data
 {
-	CDataParser::CDataParser(const std::string& file, parserType type)
+    CDataParser::CDataParser(const QString& file, parserType type)
 		:m_file(file), m_type(type)
 	{
 		switch(type) {

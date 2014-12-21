@@ -10,7 +10,7 @@
 #include "idataparsermodule.h"
 #include "ccsvdataparser.h"
 
-#include <string>
+#include <QString>
 #include <cassert>
 
 namespace data
@@ -31,7 +31,7 @@ namespace data
 		/** 
 		* @brief This is the constructor.
 		*/
-		CDataParser(const std::string& file, parserType type);
+        CDataParser(const QString& file, parserType type);
 
 		/** 
 		* @brief This is the main parser function.
@@ -50,7 +50,7 @@ namespace data
 		}
 
 	private:
-		const std::string m_file;
+        const QString m_file;
 		parserType m_type;
 		IDataParserModule* m_parser;
 	};
