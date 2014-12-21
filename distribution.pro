@@ -17,7 +17,7 @@ TEMPLATE = app
 #Component Qt project files.
 include(data/data.pro)
 include(chart/chart.pro)
-include(utility/utility.pro)
+include(core/core.pro)
 
 
 SOURCES += main.cpp

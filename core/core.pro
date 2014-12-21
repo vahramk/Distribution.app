@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# The Qt project file for the utilities.
+# The Qt project file of the Core part of the Distribution project.
 # This file must be added to the main Qt project file.
 #
 #-------------------------------------------------
@@ -13,7 +13,7 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 SOURCES += \
-    utility/cfunction.cpp
+    core/cfunction.cpp
 
 HEADERS += \
-    utility/cfunction.hpp
+    core/cfunction.hpp
