@@ -28,18 +28,18 @@ private:
         return data::Double;
     }
 
-    virtual const std::string& getName() const
+    virtual const QString& getName() const
     {
         return m_strName;
     }
 
-    virtual void getData(size_t, struct tm&) const
+    virtual void getData(int, struct tm&) const
     {}
 
-    virtual void getData(size_t, int&) const
+    virtual void getData(int, int&) const
     {}
 
-    virtual void getData(size_t, std::string&) const
+    virtual void getData(int, QString&) const
     {}
 
     virtual const data::DataInterface* getDataBuffer() const
@@ -48,7 +48,7 @@ private:
     }
 
 private:
-    std::string m_strName;
+    QString m_strName;
 };
 
 } // namespace chart
