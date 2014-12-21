@@ -8,24 +8,24 @@
 #include "cdatacolumn.h"
 #include "cdatatable.h"	
 
-#include <string>
+#include <QString>
 
 namespace data
 {	
 	CDataTable::CDataTable()
 	{}
 
-	const std::string& CDataTable::getColumnName(size_t index) const
+    const QString& CDataTable::getColumnName(int index) const
 	{
 		return m_data.at(index)->getName();
 	}
 
-	size_t CDataTable::getColumnCount() const
+    int CDataTable::getColumnCount() const
 	{
 		return m_data.size();
 	}
 
-	size_t CDataTable::getRowCount() const
+    int CDataTable::getRowCount() const
 	{
 		if(m_data.empty()) {
 			return 0;
@@ -33,7 +33,7 @@ namespace data
 		return m_data.at(0)->getSize();
 	}
 
-	const IDataColumn* CDataTable::getColumn(size_t index) const
+    const IDataColumn* CDataTable::getColumn(int index) const
 	{
 		return m_data.at(index).get();
 	}
