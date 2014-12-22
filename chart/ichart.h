@@ -10,6 +10,8 @@
 #include <QSharedData>
 
 class QPaintDevice;
+class QRect;
+
 namespace data {
 class IDataColumn;
 }
@@ -36,9 +38,10 @@ public:
 public:
     /**
      * @brief draw chart on given paint device
-     * @param[out] pd reference to paint device
+     * @param[in] pd reference to paint device
+     * @param[in] r reference to rect
      */
-    virtual void draw(QPaintDevice& pd) = 0;
+    virtual void draw(QPaintDevice& pd, const QRect& r) = 0;
 
 public:
     /**

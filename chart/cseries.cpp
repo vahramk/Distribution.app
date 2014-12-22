@@ -30,12 +30,12 @@ void CSeries::setY(IDataRange *yr)
     m_oyRange = yr;
 }
 
-IDataRange* CSeries::getX()
+const IDataRange* CSeries::getX()
 {
     return m_oxRange;
 }
 
-IDataRange* CSeries::getY()
+const IDataRange *CSeries::getY()
 {
     return m_oyRange;
 }

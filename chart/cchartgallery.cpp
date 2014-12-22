@@ -3,7 +3,7 @@
 * @brief CChartGallery class implementation.
 */
 
-#include "../data/idatacolumn.h"
+#include <data/idatacolumn.h>
 #include "cchartgallery.h"
 #include "cchart.h"
 
@@ -31,7 +31,7 @@ QPixmap CChartGallery::getPixmap(t_index ui, QSize os)
         return m_chash[ptrc];
     }
     QPixmap op(os);
-    ptrc->draw(op);
+    ptrc->draw(op, QRect(QPoint(0, 0), os));
     m_chash[ptrc] = op;
     return op;
 }

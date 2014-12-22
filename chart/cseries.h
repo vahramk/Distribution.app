@@ -46,10 +46,10 @@ public:
     virtual void draw(QPainter* p, CDataArea* d) = 0;
 
 protected:
-    IDataRange* getX();
+    const IDataRange* getX();
 
 protected:
-    IDataRange* getY();
+    const IDataRange* getY();
 
 private:
     IDataRange* m_oxRange;

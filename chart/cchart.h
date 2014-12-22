@@ -14,6 +14,7 @@
 class QPixmap;
 class QImage;
 class QPaintDevice;
+class QRect;
 
 namespace data {
 class IDataColumn;
@@ -54,28 +55,29 @@ public:
      * @brief build CChart for box chart type
      * @param[in] c pointer to column
      */
-    void makeForBoxChart(data::IDataColumn* c);
+    void makeForBoxChart(const data::IDataColumn* c);
 
 public:
     /**
      * @brief build CChart for probability chart type
      * @param[in] c pointer to column
      */
-    void makeForProbabilityChart(data::IDataColumn* c);
+    void makeForProbabilityChart(const data::IDataColumn* c);
 
 public:
     /**
      * @brief build CChart for histogram chart type
      * @param[in] c pointer to column
      */
-    void makeForHistogramChart(data::IDataColumn* c);
+    void makeForHistogramChart(const data::IDataColumn *c);
 
 public:
     /**
      * @brief draw chart on given paint device
-     * @param[out] d reference to paint device
+     * @param[in] d reference to paint device
+     * @param[in] r reference to rect on which should be drawn
      */
-    void draw(QPaintDevice& d);
+    void draw(QPaintDevice& d, const QRect &r);
 
 private:
     QExplicitlySharedDataPointer<IChart> m_data;
