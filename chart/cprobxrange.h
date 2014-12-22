@@ -29,16 +29,16 @@ public:
     virtual QPair<double, double> getRange() const;
 
 public:
-    virtual size_t getSize() const;
+    virtual int getSize() const;
 
 public:
-    virtual void getData(size_t row, double &val) const;
+    virtual void getData(int row, double &val) const;
     /// @}
 
 private:
     double m_fMin;
     double m_fMax;
-    size_t m_uSize;
+    int m_uSize;
     std::vector<double> m_vecData;
 };
 

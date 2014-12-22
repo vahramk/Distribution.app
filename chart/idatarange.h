@@ -22,7 +22,7 @@ public:
     virtual QPair<double, double> getRange() const = 0;
 
 public:
-    virtual void getData(size_t, double& v) const = 0;
+    virtual void getData(int, double& v) const = 0;
 
     // THIS IS TEMPRIARY WORKROUND
 private:

@@ -14,7 +14,7 @@ void CProbYRange::init(const data::IDataColumn *dc)
     m_uSize = dc->getSize();
 }
 
-size_t CProbYRange::getSize() const
+int CProbYRange::getSize() const
 {
     return m_uSize;
 }
@@ -24,7 +24,7 @@ QPair<double, double> CProbYRange::getRange() const
     return QPair<double, double>(0, 1);
 }
 
-void CProbYRange::getData(size_t row, double &val) const
+void CProbYRange::getData(int row, double &val) const
 {
     val = (row + 1) / m_uSize;
 }

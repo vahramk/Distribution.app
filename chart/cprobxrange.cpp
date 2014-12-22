@@ -18,7 +18,7 @@ void CProbXRange::init(const data::IDataColumn *dc)
     // waithing for CFunction class
 }
 
-size_t CProbXRange::getSize() const
+int CProbXRange::getSize() const
 {
     return m_uSize;
 }
@@ -28,7 +28,7 @@ QPair<double, double> CProbXRange::getRange() const
     return QPair<double, double>(m_fMin, m_fMax);
 }
 
-void CProbXRange::getData(size_t row, double &val) const
+void CProbXRange::getData(int row, double &val) const
 {
     Q_ASSERT(row < m_vecData.size());
     val = m_vecData.at(row);

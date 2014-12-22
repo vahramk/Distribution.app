@@ -29,10 +29,10 @@ public:
     virtual QPair<double, double> getRange() const;
 
 public:
-    virtual size_t getSize() const;
+    virtual int getSize() const;
 
 public:
-    virtual void getData(size_t row, double &val) const;
+    virtual void getData(int row, double &val) const;
     /// @}
 
 private:
