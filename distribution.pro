@@ -1,7 +1,7 @@
 #-------------------------------------------------
 #
 # The Qt project file of the Distribution.app project.
-# This file mast must include all component Qt project files.
+# This file must include all component Qt project files.
 #
 #-------------------------------------------------
 
@@ -17,6 +17,7 @@ TEMPLATE = app
 #Component Qt project files.
 include(data/data.pro)
 include(chart/chart.pro)
+include(core/core.pro)
 
 
 SOURCES += main.cpp

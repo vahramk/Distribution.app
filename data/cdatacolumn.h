@@ -9,8 +9,8 @@
 
 #include "idatacolumn.h"
 
-#include <string>
-#include <vector>
+#include <QString>
+#include <QVector>
 
 namespace data
 {
@@ -29,17 +29,17 @@ namespace data
 		* @param[in] name is the name of column. 
 		* @param[in] type is the type of column. 
 		*/
-		CDataColumn(const std::string& name, EDataType type);
+        CDataColumn(const QString& name, EDataType type);
 
 		/** 
 		* @brief This function returns the count of rows in column. 
 		*/
-		virtual size_t getSize() const;
+        virtual int getSize() const;
 
 		/** 
 		* @brief This function returns the name of the column.
 		*/
-		virtual const std::string& getName() const;
+        virtual const QString& getName() const;
 
 		/** 
 		* @brief This function returns the type of the column.
@@ -48,12 +48,12 @@ namespace data
 
 		/** 
 		* @brief This function returns value of current cell, 
-		*		 corresponding to passed arguments (for std::string type).
+        *		 corresponding to passed arguments (for QString type).
 		* @param[in] row is the row (cell) number in current column. 
 		* @param[out] val is the value of cell which will be returned. 
 		* @exception throws std::out_of_range exception.
 		*/
-		virtual void getData(size_t row, std::string& val) const;
+        virtual void getData(int row, QString& val) const;
 
 		/** 
 		* @brief This function returns value of current cell, 
@@ -62,7 +62,7 @@ namespace data
 		* @param[out] val is the value of cell which will be returned. 
 		* @exception throws std::out_of_range exception.
 		*/
-		virtual void getData(size_t row, struct tm& val) const;
+        virtual void getData(int row, struct tm& val) const;
 
 		/** 
 		* @brief This function returns value of current cell, 
@@ -71,7 +71,7 @@ namespace data
 		* @param[out] val is the value of cell which will be returned. 
 		* @exception throws std::out_of_range exception.
 		*/
-		virtual void getData(size_t row, int& val) const;
+        virtual void getData(int row, int& val) const;
 
 		/** 
 		* @brief This function returns value of current cell, 
@@ -80,7 +80,7 @@ namespace data
 		* @param[out] val is the value of cell which will be returned. 
 		* @exception throws std::out_of_range exception.
 		*/
-		virtual void getData(size_t row, double& val) const;
+        virtual void getData(int row, double& val) const;
 
 		/** 
 		* @brief This function returns chunk of data buffer from column, 
@@ -108,7 +108,7 @@ namespace data
 		}
 
 	private:
-        std::string m_name;
+        QString m_name;
         EDataType m_type;
 		DataInterface* m_data;
 	};

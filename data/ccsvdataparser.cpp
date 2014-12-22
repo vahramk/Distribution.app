@@ -8,52 +8,52 @@
 #include "cdatacolumn.h"
 #include "cdatatable.h"
 
-#include <string>
+#include <QString>
 #include <fstream>
 #include <cassert>
 
 namespace data
 {
-	CCSVParser::CCSVParser(const std::string& file_name)
+    CCSVParser::CCSVParser(const QString& file_name)
 		:m_path(file_name), m_table(new CDataTable)
 	{}
 
 	IDataTable* CCSVParser::parse()
 	{
-		std::ifstream in(m_path.c_str());
+        std::ifstream in(m_path.toStdString().c_str());
 		if (!in.is_open()) return 0;
 
-		std::vector<std::string> vheader;
-		std::vector<std::string> vdata;
-		Tockenizer line;
+        QVector<QString> vheader;
+        QVector<QString> vdata;
+        Tockenizer line;
 
 		int i = 2;//read first 2 lines
-		while (i-- && getline(in, line))
-		{
+        while (i-- && getline(in, line))
+        {
 			if(i == 1) {
-				tokenize_line(line, vheader);
+                tokenize_line(line, vheader);
 				continue;
 			}
-			tokenize_line(line, vdata);
+            tokenize_line(line, vdata);
 		}
 
 		assert(vheader.size() == vdata.size());
 
 		CDataColumn* c;
-        for(size_t i=0; i<vdata.size(); ++i)
+        for(int i=0; i<vdata.size(); ++i)
 		{
-			const std::string& name = vheader[i];
+            const QString& name = vheader[i];
 			EDataType type = get_type(vdata[i]);//get type of the column
 			c = new CDataColumn(name, type);
 			addValueToColumn(c, vdata[i]);
 			m_table->addDataColumn(c);
 		}
 
-		while (getline(in, line))
+        while (getline(in, line))
 		{
 			tokenize_line(line, vdata);
-			size_t c = m_table->getColumnCount();
-            for(size_t i=0; i<c; ++i)
+            int c = m_table->getColumnCount();
+            for(int i=0; i<c; ++i)
 			{
 				addValueToTable(m_table, i, vdata[i]);
 			}
@@ -61,11 +61,11 @@ namespace data
 		return m_table;
 	}
 
-	EDataType CCSVParser::get_type(const std::string& value) const
+    EDataType CCSVParser::get_type(const QString& value) const
 	{
 		EDataType t;
 		int dc = 0;
-        for(size_t i=0; i<value.size(); ++i)
+        for(int i=0; i<value.size(); ++i)
 		{
 			if(value[i] == '.')
 			{
@@ -91,16 +91,16 @@ namespace data
 		return t;
 	}
 
-	void CCSVParser::tokenize_line(const Tockenizer& line, std::vector<std::string>& vdata) const
+    void CCSVParser::tokenize_line(const Tockenizer& line, QVector<QString>& vdata) const
 	{
 		while(line.operator ++())
 		{
-			vdata.push_back(std::string(line, line.start(), line.end() - line.start()));
+            vdata.push_back(QString(std::string(line, line.start(), line.end() - line.start()).c_str()));
 		}
 		line.reset_parser();
 	}
 
-	void CCSVParser::addValueToColumn(CDataColumn* c, const std::string& value)
+    void CCSVParser::addValueToColumn(CDataColumn* c, const QString& value)
 	{
 		switch(c->getType()) {
 		case String:
@@ -109,18 +109,18 @@ namespace data
 		case DateTime:
 			{
 				struct tm dt;
-				fromStringToTime(value, dt);
+                fromStringToTime(value.toStdString(), dt);
 				c->addValue(dt);
 				break;
 			}
 		case Int:
 			{
-				c->addValue(fromString<int>(value));
+                c->addValue(fromString<int>(value.toStdString()));
 				break;
 			}
 		case Double:
 			{
-				c->addValue(fromString<double>(value));
+                c->addValue(fromString<double>(value.toStdString()));
 				break;
 			}
 		default:
@@ -129,7 +129,7 @@ namespace data
 		}
 	}
 
-	void CCSVParser::addValueToTable(CDataTable* t, size_t i, const std::string& value)
+    void CCSVParser::addValueToTable(CDataTable* t, int i, const QString& value)
 	{
 		switch(t->getColumn(i)->getType()) {
 		case String:
@@ -138,18 +138,18 @@ namespace data
 		case DateTime:
 			{
 				struct tm dt;
-				fromStringToTime(value, dt);
+                fromStringToTime(value.toStdString(), dt);
 				t->addCell(i, dt);
 				break;
 			}
 		case Int:
 			{
-				t->addCell(i, fromString<int>(value));
+                t->addCell(i, fromString<int>(value.toStdString()));
 				break;
 			}
 		case Double:
 			{
-				t->addCell(i, fromString<double>(value));
+                t->addCell(i, fromString<double>(value.toStdString()));
 				break;
 			}
 		default:
@@ -157,5 +157,10 @@ namespace data
 			break;
 		}	
 	}
+
+    CCSVParser::~CCSVParser()
+    {
+        delete m_table;
+    }
 
 } //namespace data

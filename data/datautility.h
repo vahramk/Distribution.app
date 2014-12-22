@@ -8,7 +8,11 @@
 #define DATAUTILITY_H
 
 #include <vector>
+#include <string>
 #include <sstream>
+
+#include <QString>
+#include <QChar>
 
 namespace data
 {
@@ -167,7 +171,7 @@ namespace data
 	}
 
 	template<typename T>
-	T fromString(const std::string& value) 
+    T fromString(const std::string& value)
 	{
 		std::istringstream stream(value);
 		T t;
@@ -175,14 +179,16 @@ namespace data
 		return t;
 	}
 
-	void fromStringToTime(const std::string& value, struct tm& dt);
+    void fromStringToTime(const std::string& value, struct tm& dt);
 
-	class Tockenizer:public std::string
+    class Tockenizer:public std::string
 	{
 	public:
-		Tockenizer()
-			:m_start(0), m_end(0), m_indx(0)
-		{}
+        Tockenizer()
+            : m_start(0)
+            , m_end(0)
+            , m_indx(0)
+        {}
 
 		bool operator++() const
 		{
@@ -193,7 +199,7 @@ namespace data
 			m_start = m_indx;
 			for(int bcksl_count = 0; m_indx < size(); ++m_indx)
 			{
-				const char& c = this->operator [](m_indx);
+                const QChar& c = this->operator [](m_indx);
 				if(c =='\\')
 				{
 					if(bcksl_count == 0)
@@ -227,9 +233,9 @@ namespace data
 
 		void reset_parser() const
 		{
-			m_start=0;
-			m_end=0;
-			m_indx=0;
+            m_start = 0;
+            m_end = 0;
+            m_indx = 0;
 		}
 
 	private:

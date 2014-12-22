@@ -12,12 +12,12 @@
 
 namespace data
 {
-	CDataColumn::CDataColumn(const std::string& name, EDataType type)
+    CDataColumn::CDataColumn(const QString& name, EDataType type)
 		:m_name(name), m_type(type)
 	{
 		switch(m_type) {
 		case String:
-			m_data = new Data<std::string>;
+            m_data = new Data<QString>;
 			break;
 		case DateTime:
 			m_data = new Data<struct tm>;
@@ -34,11 +34,11 @@ namespace data
 		}
 	}
 
-	size_t CDataColumn::getSize() const
+    int CDataColumn::getSize() const
 	{
 		switch(m_type) {
 		case String:
-			return m_data->getSize<std::string>();
+            return m_data->getSize<QString>();
 			break;
 		case DateTime:
 			return m_data->getSize<struct tm>();
@@ -56,7 +56,7 @@ namespace data
 		}
 	}
 
-	const std::string& CDataColumn::getName() const
+    const QString& CDataColumn::getName() const
 	{
 		return m_name;
 	}
@@ -66,22 +66,22 @@ namespace data
 		return m_type;
 	}
 
-	void CDataColumn::getData(size_t row, std::string& val) const
+    void CDataColumn::getData(int row, QString& val) const
 	{
 		m_data->getData(row,val);
 	}
 
-	void CDataColumn::getData(size_t row, struct tm& val) const
+    void CDataColumn::getData(int row, struct tm& val) const
 	{
 		m_data->getData(row,val);
 	}
 
-	void CDataColumn::getData(size_t row, int& val) const
+    void CDataColumn::getData(int row, int& val) const
 	{
 		m_data->getData(row,val);
 	}
 
-	void CDataColumn::getData(size_t row, double& val) const
+    void CDataColumn::getData(int row, double& val) const
 	{
 		m_data->getData(row,val);
 	}

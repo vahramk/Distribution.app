@@ -1,7 +1,7 @@
 #-------------------------------------------------
 #
-# The Qt project file of the data project.
-# This file mast be added to the main Qt project file.
+# The Qt project file of the Data project.
+# This file must be added to the main Qt project file.
 #
 #-------------------------------------------------
 

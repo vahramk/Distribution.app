@@ -9,7 +9,7 @@
 
 #include "idatatable.h"
 
-#include <vector>
+#include <QVector>
 
 namespace data
 {	
@@ -35,7 +35,7 @@ namespace data
 		typedef unique_ptr<CDataColumn, GenericDeleter<CDataColumn> > unique_ptr_type;
 
 		//Defines container of unique pointer.
-		typedef std::vector< unique_ptr_type > unique_ptr_vector_t;
+        typedef QVector< unique_ptr_type > unique_ptr_vector_t;
 
     //} //unnamed namespace
 
@@ -57,17 +57,17 @@ namespace data
 		* @param[in] index is the column index in table. 
 		* @exception throws std::out_of_range exception.
 		*/
-		virtual const std::string& getColumnName(size_t index) const;
+        virtual const QString& getColumnName(int index) const;
 
 		/** 
 		* @brief This function returns the count of columns in table.
 		*/
-		virtual size_t getColumnCount() const;
+        virtual int getColumnCount() const;
 
 		/** 
 		* @brief This function returns the count of rows in table.
 		*/
-		virtual size_t getRowCount() const;
+        virtual int getRowCount() const;
 
 		/** 
 		* @brief This function returns the column pointer, 
@@ -75,7 +75,7 @@ namespace data
 		* @param[in] index is the column index in table. 
 		* @exception throws std::out_of_range exception.
 		*/
-		virtual const IDataColumn* getColumn(size_t index) const;
+        virtual const IDataColumn* getColumn(int index) const;
 
 		/** 
 		* @brief This is the desconstructor.
@@ -97,7 +97,7 @@ namespace data
 		* @param[in] value this is the value which should be inserted. 
 		*/
 		template<typename T>
-		void addCell(size_t column_index, const T& value)
+        void addCell(int column_index, const T& value)
 		{
 			m_data[column_index]->addValue(value);
 		}

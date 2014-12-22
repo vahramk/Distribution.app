@@ -9,7 +9,7 @@
 
 #include "idatacolumn.h"
 
-#include <string>
+#include <QString>
 
 namespace data 
 {
@@ -25,17 +25,17 @@ namespace data
 		* @param[in] index is the column index in table. 
 		* @exception throws std::out_of_range exception.
 		*/
-		virtual const std::string& getColumnName(size_t index) const = 0;
+        virtual const QString& getColumnName(int index) const = 0;
 		
 		/** 
 		* @brief This function returns the count of columns in table.
 		*/
-		virtual size_t getColumnCount() const = 0;
+        virtual int getColumnCount() const = 0;
 		
 		/** 
 		* @brief This function returns the count of rows in table.
 		*/		
-		virtual size_t getRowCount() const = 0;
+        virtual int getRowCount() const = 0;
 		
 		/** 
 		* @brief This function returns the column pointer, 
@@ -43,7 +43,7 @@ namespace data
 		* @param[in] index is the column index in table. 
 		* @exception throws std::out_of_range exception.
 		*/		
-		virtual const IDataColumn* getColumn(size_t index) const = 0;
+        virtual const IDataColumn* getColumn(int index) const = 0;
 		
 		/** 
 		* @brief This is the desconstructor.

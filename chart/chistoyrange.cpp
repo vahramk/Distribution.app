@@ -7,21 +7,21 @@
 
 namespace chart {
 
-void CHistoYRange::init(const data::IDataColumn *c, size_t bc)
+void CHistoYRange::init(const data::IDataColumn *c, int bc)
 {
     Q_ASSERT(c != 0);
     m_nBinCount = bc;
     double min = 0;
     double max = 7;
     double av = (max - min)/bc;
-    QVector<size_t> h(bc);
-    for(size_t m = 0; m < bc; ++m) {
+    QVector<int> h(bc);
+    for(int m = 0; m < bc; ++m) {
         h[m] = 0;
     }
     double avmin = 0;
     double avmax = av;
-    for(size_t i = 0; i < bc; ++i) {
-        for (size_t j = 0; j < c->getSize(); ++j) {
+    for(int i = 0; i < bc; ++i) {
+        for (int j = 0; j < c->getSize(); ++j) {
             double k ;
             c->getData(j, k);
             if (avmin >= k && k < avmax) {
@@ -34,7 +34,7 @@ void CHistoYRange::init(const data::IDataColumn *c, size_t bc)
     m_vecBins = h;
 }
 
-void CHistoYRange::getData(size_t row, double &val) const
+void CHistoYRange::getData(int row, double &val) const
 {
     Q_ASSERT(row < m_vecBins.size());
     val = m_vecBins[row];
@@ -51,7 +51,7 @@ QPair<double, double> CHistoYRange::getRange() const
     return QPair<double, double>(0, m);
 }
 
-size_t CHistoYRange::getSize() const
+int CHistoYRange::getSize() const
 {
     return m_nBinCount;
 }
