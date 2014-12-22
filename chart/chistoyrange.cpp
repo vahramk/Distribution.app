@@ -11,8 +11,8 @@ void CHistoYRange::init(const data::IDataColumn *c, size_t bc)
 {
     Q_ASSERT(c != 0);
     m_nBinCount = bc;
-    double min = 50;
-    double max = 1500;
+    double min = 0;
+    double max = 7;
     double av = (max - min)/bc;
     QVector<size_t> h(bc);
     for(size_t m = 0; m < bc; ++m) {
@@ -24,7 +24,7 @@ void CHistoYRange::init(const data::IDataColumn *c, size_t bc)
         for (size_t j = 0; j < c->getSize(); ++j) {
             double k ;
             c->getData(j, k);
-            if (avmin > k && k < avmax) {
+            if (avmin >= k && k < avmax) {
                 ++h[i];
             }
         }
@@ -36,6 +36,7 @@ void CHistoYRange::init(const data::IDataColumn *c, size_t bc)
 
 void CHistoYRange::getData(size_t row, double &val) const
 {
+    Q_ASSERT(row < m_vecBins.size());
     val = m_vecBins[row];
 }
 

@@ -7,6 +7,7 @@
 
 QT       += core
 QT	 += gui
+QT	 += widgets
 
 CONFIG   += console
 CONFIG   -= app_bundle
@@ -23,7 +24,11 @@ SOURCES += \
     chart/cprobabilitychart.cpp \
     chart/cseries.cpp \
     chart/chistoseries.cpp \
-    chart/chistoyrange.cpp
+    chart/chistoyrange.cpp \
+    chart/cprobxrange.cpp \
+    chart/cprobyrange.cpp \
+    chart/cprobseries.cpp \
+    chart/test/test.cpp
 
 HEADERS += \
     chart/cboxchart.h \
@@ -37,4 +42,7 @@ HEADERS += \
     chart/idatarange.h \
     chart/cseries.h \
     chart/chistoseries.h \
-    chart/chistoyrange.h
+    chart/chistoyrange.h \
+    chart/cprobxrange.h \
+    chart/cprobyrange.h \
+    chart/cprobseries.h

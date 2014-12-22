@@ -34,7 +34,7 @@ bool CChart::isBuild() const
     return m_data.data() != 0;
 }
 
-void CChart::makeForBoxChart(data::IDataColumn *c)
+void CChart::makeForBoxChart(const data::IDataColumn *c)
 {
     if (isBuild()) {
         delete m_data.data();
@@ -44,7 +44,7 @@ void CChart::makeForBoxChart(data::IDataColumn *c)
     m_data = new CBoxChart(c);
 }
 
-void CChart::makeForHistogramChart(data::IDataColumn *c)
+void CChart::makeForHistogramChart(const data::IDataColumn *c)
 {
     if (isBuild()) {
         delete m_data.data();
@@ -54,7 +54,7 @@ void CChart::makeForHistogramChart(data::IDataColumn *c)
     m_data = new CHistogramChart(c);
 }
 
-void CChart::makeForProbabilityChart(data::IDataColumn *c)
+void CChart::makeForProbabilityChart(const data::IDataColumn *c)
 {
     if (isBuild()) {
         delete m_data.data();
@@ -64,10 +64,10 @@ void CChart::makeForProbabilityChart(data::IDataColumn *c)
     m_data = new CProbabilityChart(c);
 }
 
-void CChart::draw(QPaintDevice &d)
+void CChart::draw(QPaintDevice &d, const QRect& r)
 {
     Q_ASSERT(isBuild());
-    m_data->draw(d);
+    m_data->draw(d, r);
 }
 
 } // namespace chart

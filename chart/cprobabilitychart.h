@@ -24,9 +24,10 @@ public:
 public:
     /**
      * @brief draw chart on given paint device
-     * @param[out] pd reference to paint device
+     * @param[in] pd reference to paint device
+     * @param[in] r reference to rect
      */
-    virtual void draw(QPaintDevice& pd);
+    virtual void draw(QPaintDevice& pd, const QRect& r);
 
 public:
     /**
