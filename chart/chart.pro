@@ -27,8 +27,7 @@ SOURCES += \
     chart/chistoyrange.cpp \
     chart/cprobxrange.cpp \
     chart/cprobyrange.cpp \
-    chart/cprobseries.cpp \
-    chart/test/test.cpp
+    chart/cprobseries.cpp
 
 HEADERS += \
     chart/cboxchart.h \
