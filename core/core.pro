@@ -16,4 +16,4 @@ SOURCES += \
     core/cfunction.cpp
 
 HEADERS += \
-    core/cfunction.hpp
+    core/cfunction.h
