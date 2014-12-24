@@ -1,3 +1,4 @@
+# main module responsible for distribution analysis management
 #ifndef CMODULE_H
 #define CMODULE_H
 
