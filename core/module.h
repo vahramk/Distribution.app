@@ -1,9 +1,9 @@
 # main module responsible for distribution analysis management
-#ifndef CMODULE_H
-#define CMODULE_H
+#ifndef MODULE_H
+#define MODULE_H
 
 /**
-* @file cmodule.h
+* @file module.h
 * @brief CModule class interface.
 */
 
