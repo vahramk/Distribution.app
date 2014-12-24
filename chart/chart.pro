@@ -27,7 +27,10 @@ SOURCES += \
     chart/chistoyrange.cpp \
     chart/cprobxrange.cpp \
     chart/cprobyrange.cpp \
-    chart/cprobseries.cpp
+    chart/cprobseries.cpp \
+    chart/caxisx.cpp \
+    chart/caxis.cpp \
+    chart/caxisy.cpp \
 
 HEADERS += \
     chart/cboxchart.h \
@@ -44,4 +47,8 @@ HEADERS += \
     chart/chistoyrange.h \
     chart/cprobxrange.h \
     chart/cprobyrange.h \
-    chart/cprobseries.h
+    chart/cprobseries.h \
+    chart/idrawable.h \
+    chart/caxisx.h \
+    chart/caxis.h \
+    chart/caxisy.h
