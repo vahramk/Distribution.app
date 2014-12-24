@@ -1,3 +1,4 @@
+# CApplication - main class
 #ifndef CAPPLICATION_H
 #define CAPPLICATION_H
 
