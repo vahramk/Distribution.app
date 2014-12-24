@@ -48,9 +48,6 @@ void CHistoSeries::draw(QPainter *p, CDataArea *d)
     xrange = x->getRange();
     yrange = y->getRange();
     d->init(QPointF(xrange.first, yrange.first), QPointF(xrange.second, yrange.second));
-    std::cout<<"RANGE"<<std::endl;
-        std::cout<<xrange.first<<"          "<<yrange.second<<std::endl;
-        std::cout<<xrange.second<<"          "<<yrange.first<<std::endl;
     for (size_t i = 0; i < xsize; ++i) {
         double yval = 0;
         y->getData(i, yval);
@@ -60,15 +57,10 @@ void CHistoSeries::draw(QPainter *p, CDataArea *d)
         x->getData(i, xval);
         Q_ASSERT(xval <= xrange.second);
 //        Q_ASSERT(xval >= xrange.first);
-        std::cout<<xval<<" "<<yval<<std::endl;
-        QPointF topleft(xval - (binsize / 2), yval);
+        QPointF topleft(xval - (binsize / 2), -yval);
         QPointF bottomright(xval + (binsize / 2), 0);
-        std::cout<<topleft.x()<<"          "<<topleft.y()<<std::endl;
-        std::cout<<bottomright.x()<<"          "<<bottomright.y()<<std::endl;
         QPointF tr_topleft = d->translate(topleft);
         QPointF tr_bottomright = d->translate(bottomright);
-        std::cout<<tr_topleft.x()<<"          "<<tr_topleft.y()<<std::endl;
-        std::cout<<tr_bottomright.x()<<"          "<<tr_bottomright.y()<<std::endl;
         p->drawRect(QRectF(tr_topleft, tr_bottomright));
     }
 }

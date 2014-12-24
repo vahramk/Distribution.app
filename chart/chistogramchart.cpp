@@ -9,6 +9,8 @@
 #include "chistoseries.h"
 #include "chistoxrange.h"
 #include "chistoyrange.h"
+#include "caxisx.h"
+#include "caxisy.h"
 
 #include <QPainter>
 #include <QPen>
@@ -34,15 +36,23 @@ void CHistogramChart::draw(QPaintDevice& pd, const QRectF& r)
     y->init(getColumn(), 5);
     s->setX(x);
     s->setY(y);
-    CDataArea* da = new CDataArea(r);
+    QRectF pr(r.x() + getXMargin(), r.y() + getYMargin(),
+              r.width() - 2 * getXMargin(), r.height() - 2 * getYMargin());
+    CDataArea* da = new CDataArea(pr);
     QPainter* p = new QPainter(&pd);
-    QPen* pen = new QPen(Qt::red);
-//    pen->setBrush(QBrush(Qt::green, Qt::SolidPattern));
+    QPen* pen = new QPen(Qt::black);
     p->setPen(*pen);
     p->drawRect(r);
-    p->translate(r.x(), r.y());
+    p->translate(pr.x(), pr.y() + pr.height());
     s->draw(p, da);
-//    p->drawLine(da->translate(QPointF(0.5, 0.5)), da->translate(QPointF(1, 1)));
+    delete p;
+    CAxisX* xa = new CAxisX;
+    CAxisY* ya = new CAxisY;
+    xa->draw(pd, r);
+    ya->draw(pd, r);
+    delete x;
+    delete y;
+    delete s;
 }
 
 CHistogramChart::~CHistogramChart()

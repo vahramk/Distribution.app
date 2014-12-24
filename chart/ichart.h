@@ -10,6 +10,8 @@
 #include <QSharedData>
 #include <QString>
 
+#include "idrawable.h"
+
 class QPaintDevice;
 class QRectF;
 
@@ -21,6 +23,7 @@ namespace chart
 {
 
 class IChart : public QSharedData
+             , public IDrawable
 {
 public:
     /**
@@ -31,6 +34,7 @@ public:
      */
     IChart(const data::IDataColumn* oc)
         : QSharedData()
+        , IDrawable()
         , m_cocolumn(oc)
     {
         Q_ASSERT(oc != 0);
