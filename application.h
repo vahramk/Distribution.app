@@ -1,1 +1,0 @@
-# CApplication - main class
