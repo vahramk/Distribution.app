@@ -13,7 +13,11 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 SOURCES += \
-    core/cfunction.cpp
+    core/cfunction.cpp \
+    core/capplication.cpp \
+    core/cmodule.cpp
 
 HEADERS += \
-    core/cfunction.h
+    core/cfunction.h \
+    core/capplication.h \
+    core/cmodule.h
