@@ -1,9 +1,9 @@
 # CApplication - main class
-#ifndef CAPPLICATION_H
-#define CAPPLICATION_H
+#ifndef APPLICATION_H
+#define APPLICATION_H
 
 /**
-* @file capplication.h
+* @file application.h
 * @brief CApplication class interface.
 */
 
@@ -54,4 +54,4 @@ private:
 
 } // namespace core
 
-#endif // CAPPLICATION_H
+#endif // APPLICATION_H
