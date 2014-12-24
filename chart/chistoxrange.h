@@ -37,6 +37,8 @@ private:
     int m_nBinCount;
     double m_fBinSize;
     double m_fBinAnchor;
+    double m_fMin;
+    double m_fMax;
 };
 
 } // namespace chart

@@ -8,9 +8,10 @@
 
 #include <QtGlobal>
 #include <QSharedData>
+#include <QString>
 
 class QPaintDevice;
-class QRect;
+class QRectF;
 
 namespace data {
 class IDataColumn;
@@ -37,11 +38,17 @@ public:
 
 public:
     /**
+     * @brief return chart name
+     */
+    virtual QString getName() const = 0;
+
+public:
+    /**
      * @brief draw chart on given paint device
      * @param[in] pd reference to paint device
      * @param[in] r reference to rect
      */
-    virtual void draw(QPaintDevice& pd, const QRect& r) = 0;
+    virtual void draw(QPaintDevice& pd, const QRectF& r) = 0;
 
 public:
     /**

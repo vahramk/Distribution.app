@@ -11,7 +11,7 @@
 #include "cprobyrange.h"
 
 #include <QPainter>
-#include <QRect>
+#include <QRectF>
 
 namespace chart {
 
@@ -19,7 +19,12 @@ CProbabilityChart::CProbabilityChart(const data::IDataColumn *oc)
     : IChart(oc)
 {}
 
-void CProbabilityChart::draw(QPaintDevice &pd, const QRect& r)
+QString CProbabilityChart::getName() const
+{
+    return "Probability";
+}
+
+void CProbabilityChart::draw(QPaintDevice &pd, const QRectF& r)
 {
     CProbSeries* s = new CProbSeries();
     CProbXRange* x = new CProbXRange();
@@ -34,6 +39,7 @@ void CProbabilityChart::draw(QPaintDevice &pd, const QRect& r)
     yrange = y->getRange();
     da->init(QPointF(xrange.first, yrange.first), QPointF(xrange.second, yrange.second));
     QPainter* p = new QPainter(&pd);
+    p->setPen(Qt::black);
     s->draw(p, da);
 }
 

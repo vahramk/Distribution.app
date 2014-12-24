@@ -12,10 +12,23 @@ void CHistoXRange::init(const IDataColumn *c, int bc)
     Q_ASSERT(c != 0);
     m_nBinCount = bc;
     double min = 0;
-    double max = 7;
+    c->getData(0, min);
+    double max = 1;
+    c->getData(0, max);
+    for (int i = 1; i <c->getSize(); ++i) {
+        double v = 0;
+        c->getData(i, v);
+        if (v > max) {
+            max = v;
+        } else if (v < min) {
+            min = v;
+        }
+    }
     double av = (max - min)/bc;
     m_fBinSize = av;
-    m_fBinAnchor = min;
+    m_fBinAnchor = 0;
+    m_fMax = max;
+    m_fMin = min;
 }
 
 int CHistoXRange::getSize() const
@@ -25,9 +38,7 @@ int CHistoXRange::getSize() const
 
 QPair<double, double> CHistoXRange::getRange() const
 {
-    double min =0;
-    double max = 7;
-    return QPair<double, double>(min, max);
+    return QPair<double, double>(m_fMin, m_fMax);
 }
 
 void CHistoXRange::getData(int row, double &val) const

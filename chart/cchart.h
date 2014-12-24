@@ -44,6 +44,13 @@ public:
 
 public:
     /**
+     * @brief Return chart name
+     * @return name
+     */
+    QString getName() const;
+
+public:
+    /**
      * @brief interface for checkin if cchart object
      * is build for chart or not
      * @return build state
@@ -77,7 +84,7 @@ public:
      * @param[in] d reference to paint device
      * @param[in] r reference to rect on which should be drawn
      */
-    void draw(QPaintDevice& d, const QRect &r);
+    void draw(QPaintDevice& d, const QRectF &r);
 
 private:
     QExplicitlySharedDataPointer<IChart> m_data;

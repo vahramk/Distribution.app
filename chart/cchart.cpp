@@ -29,6 +29,12 @@ CChart& CChart::operator=(const CChart& c)
     return *this;
 }
 
+QString CChart::getName() const
+{
+    Q_ASSERT(isBuild());
+    return m_data->getName();
+}
+
 bool CChart::isBuild() const
 {
     return m_data.data() != 0;
@@ -64,7 +70,7 @@ void CChart::makeForProbabilityChart(const data::IDataColumn *c)
     m_data = new CProbabilityChart(c);
 }
 
-void CChart::draw(QPaintDevice &d, const QRect& r)
+void CChart::draw(QPaintDevice &d, const QRectF& r)
 {
     Q_ASSERT(isBuild());
     m_data->draw(d, r);

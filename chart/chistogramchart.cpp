@@ -12,7 +12,7 @@
 
 #include <QPainter>
 #include <QPen>
-#include <QRect>
+#include <QRectF>
 
 namespace chart {
 
@@ -20,7 +20,12 @@ CHistogramChart::CHistogramChart(const data::IDataColumn *oc)
     : IChart(oc)
 {}
 
-void CHistogramChart::draw(QPaintDevice& pd, const QRect& r)
+QString CHistogramChart::getName() const
+{
+    return "Histogram";
+}
+
+void CHistogramChart::draw(QPaintDevice& pd, const QRectF& r)
 {
     CHistoSeries* s = new CHistoSeries();
     CHistoXRange* x = new CHistoXRange();
@@ -32,9 +37,12 @@ void CHistogramChart::draw(QPaintDevice& pd, const QRect& r)
     CDataArea* da = new CDataArea(r);
     QPainter* p = new QPainter(&pd);
     QPen* pen = new QPen(Qt::red);
-    pen->setBrush(Qt::Dense5Pattern);
-    p->setPen(Qt::red);
+//    pen->setBrush(QBrush(Qt::green, Qt::SolidPattern));
+    p->setPen(*pen);
+    p->drawRect(r);
+    p->translate(r.x(), r.y());
     s->draw(p, da);
+//    p->drawLine(da->translate(QPointF(0.5, 0.5)), da->translate(QPointF(1, 1)));
 }
 
 CHistogramChart::~CHistogramChart()

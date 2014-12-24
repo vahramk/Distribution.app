@@ -14,9 +14,14 @@ CBoxChart::CBoxChart(const data::IDataColumn *oc)
     : IChart(oc)
 {}
 
-void CBoxChart::draw(QPaintDevice& pd, const QRect& r)
+void CBoxChart::draw(QPaintDevice& pd, const QRectF& r)
 {
 
+}
+
+QString CBoxChart::getName() const
+{
+    return "Box";
 }
 
 CBoxChart::~CBoxChart()

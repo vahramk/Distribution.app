@@ -19,8 +19,12 @@ void CDataArea::init(const QPointF &tl, const QPointF &br)
 
 QPointF CDataArea::translate(const QPointF &p)
 {
-    double x = m_oscreenrect.x() * p.x() / m_odatarect.x();
-    double y = m_oscreenrect.y() * p.y() / m_odatarect.y();
+    Q_ASSERT(m_oscreenrect.width() > 0);
+    Q_ASSERT(m_oscreenrect.height() > 0);
+    Q_ASSERT(m_odatarect.width() > 0);
+    Q_ASSERT(m_odatarect.height() > 0);
+    double x = m_oscreenrect.width() * p.x() / m_odatarect.width();
+    double y = m_oscreenrect.height() * p.y() / m_odatarect.height();
     return QPointF(x, y);
 }
 
