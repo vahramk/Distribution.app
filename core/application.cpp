@@ -1,12 +1,12 @@
 /**
-* @file capplication.cpp
+* @file application.cpp
 * @brief CApplication class implementation.
 */
 
 #include <data/cdataparser.h>
 #include <data/idatatable.h>
-#include "capplication.h"
-#include "cmodule.h"
+#include "application.h"
+#include "module.h"
 
 #include <QStringList>
 
