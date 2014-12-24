@@ -41,4 +41,4 @@ private:
 };
 
 } //namespace core
-#endif // CMODULE_H
+#endif // MODULE_H
