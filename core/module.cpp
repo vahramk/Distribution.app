@@ -1,10 +1,10 @@
 /**
-* @file cmodule.cpp
+* @file module.cpp
 * @brief CModule class implementation.
 */
 
 #include <data/idatatable.h>
-#include "cmodule.h"
+#include "module.h"
 
 namespace core
 {
