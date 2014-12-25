@@ -55,7 +55,7 @@ void CHistoSeries::draw(QPainter *p, CDataArea *d)
         Q_ASSERT(yval >= yrange.first);
         double xval = 0;
         x->getData(i, xval);
-        Q_ASSERT(xval <= xrange.second);
+//        Q_ASSERT(xval <= xrange.second);
 //        Q_ASSERT(xval >= xrange.first);
         QPointF topleft(xval - (binsize / 2), -yval);
         QPointF bottomright(xval + (binsize / 2), 0);
