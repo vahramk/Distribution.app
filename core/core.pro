@@ -14,10 +14,10 @@ TEMPLATE = app
 
 SOURCES += \
     core/cfunction.cpp \
-    core/capplication.cpp \
-    core/cmodule.cpp
+    core/application.cpp \
+    core/module.cpp
 
 HEADERS += \
     core/cfunction.h \
-    core/capplication.h \
-    core/cmodule.h
+    core/application.h \
+    core/module.h

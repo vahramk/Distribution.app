@@ -1,4 +1,4 @@
-# CApplication - main class
+/// CApplication - main class
 #ifndef APPLICATION_H
 #define APPLICATION_H
 

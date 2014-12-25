@@ -1,4 +1,4 @@
-# main module responsible for distribution analysis management
+/// main module responsible for distribution analysis management
 #ifndef MODULE_H
 #define MODULE_H
 
